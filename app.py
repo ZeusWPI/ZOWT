@@ -12,10 +12,15 @@ def hello_world():  # put application's code here
     return render_template('index.html')
 
 
-@app.route('/topics')
+@app.route('/topics', methods=["GET"])
 def topics():
     topics = db.get_topics()
     return render_template('topics.html', topics=topics)
+
+@app.route('/topics', methods=["POST"])
+def add_topic():
+    db.add_topic(request.form["title"])
+    return topics()
 
 @app.route('/topics/<topic_id>/comments', methods=["GET"])
 def load_comments(topic_id):
