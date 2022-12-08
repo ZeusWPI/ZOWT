@@ -36,8 +36,14 @@ def load_comments(topic_id):
 @app.route('/topics/<topic_id>/comments', methods=["POST"])
 def post_comment(topic_id):
     # todo: when zauth added get userid from cookie
-    dummyuserid = db.get_users()[0]["_id"]
-    db.add_comment(topic_id, dummyuserid, request.form['content'])
+    user_id = db.get_users()[0]["_id"]
+
+    # delete existing comment so the new one replaces it
+    maybe_comment = [comment for comment in db.get_comments(topic_id) if comment["user_id"] == f"{user_id}"]
+    if maybe_comment:
+        db.delete_comment(maybe_comment[0]["_id"])
+
+    db.add_comment(topic_id, user_id, request.form['content'])
     return load_comments(topic_id)
 
 if __name__ == '__main__':

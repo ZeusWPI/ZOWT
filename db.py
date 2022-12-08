@@ -68,3 +68,6 @@ class Mongo:
             "content": content
         }).inserted_id
         return self.comments.find_one({"_id": f"{_id}"})
+
+    def delete_comment(self, comment_id):
+        self.comments.delete_one({"_id": f"{comment_id}"})
