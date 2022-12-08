@@ -3,13 +3,13 @@
 {% block content %}
     <div style="flex-direction: column; width: 50%">
         <div><a href="/topics">Go back</a></div>
-        <h1>{% block title %} {{ topic }} {% endblock %}</h1>
+        <h1>{% block title %} {{ topic_name }} {% endblock %}</h1>
     </div>
 
     <div style="width: 50%; margin: auto">
         {% for comment in comments %}
         <div style="padding: 10px; background-color: #EEE; margin: 20px" >
-            <p style="font-size: 24px">{{ comment.value }}</p>
+            <p style="font-size: 24px">{{ comment.content }}</p>
         </div>
         {% endfor %}
     </div>
