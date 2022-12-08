@@ -27,8 +27,14 @@ def load_comments(topic_id):
     #           {'value': 'This is the second comment.', 'id': "uuid2"},
     #           {'value': 'This is the third comment.', 'id': "uuid3"},
     #           {'value': 'This is the fourth comment.', 'id': "uuid4"}]
-    comments = db.get_comments(topic_id)
-    # todo get topic name through topic id
+
+    # some cursed code lol
+    comments = []
+    # add usernames to comments
+    for comment in db.get_comments(topic_id):
+        comment["username"] = db.get_user(comment["user_id"])["name"]
+        comments.append(comment)
+
     return render_template('comments.html', comments=comments, topic_name=db.get_topic(topic_id)["name"])
 #app.jinja_env.globals.update(load_topic=load_topic)
 

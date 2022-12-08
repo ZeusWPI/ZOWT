@@ -42,6 +42,9 @@ class Mongo:
     def get_topic(self, topic_id) -> [dict]:
         return self.topics.find_one({"_id": f"{topic_id}"})
 
+    def get_user(self, user_id) -> [dict]:
+        return self.users.find_one({"_id": f"{user_id}"})
+
     def add_user(self, name) -> dict:
         _id = self.users.insert_one({
             "_id": f"{uuid.uuid4()}",
