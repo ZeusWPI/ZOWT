@@ -1,27 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} - ZOWT</title>
-    <style>
-        nav a {
-            color: #d64161;
-            font-size: 3em;
-            margin-left: 50px;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <title>{% block title %} {% endblock %} - ZOWT</title>
+  <link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='style.css')}}">
 </head>
+
 <body>
-    <nav>
-        <a href="/">ZOWT</a>
-        <a href="/topics">Topics</a>
-{#        <a href="{{ url_for('topics') }}">Topics</a>#}
+  <div class="container">
+    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">ZOWT</a>
+          <a class="navbar-item" href="/topics">Topics</a>
+          {# <a class="navbar-item" href="{{ url_for('topics') }}">Topics</a>#}
+        </div>
+      </div>
     </nav>
     <hr>
-    <div class="content">
-        {% block content %} {% endblock %}
-    </div>
+    {% block content %} {% endblock %}
+  </div>
 </body>
+
 </html>

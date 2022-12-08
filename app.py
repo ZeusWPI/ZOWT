@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import sass
 import sys
 
 from db import Mongo
@@ -6,6 +7,7 @@ db = Mongo()
 
 app = Flask(__name__)
 
+sass.compile(dirname=('/assets/', '/static/'))
 
 @app.route('/')
 def hello_world():  # put application's code here

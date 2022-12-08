@@ -1,0 +1,16 @@
+// Bulma variable overrides
+$primary: #ff7f00;
+$text: #172940;
+$link: $primary;
+$title-color: $text;
+
+.container > hr {
+  margin: 1vh 0;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -2,8 +2,8 @@
 
 {% block content %}
     <div style="display: flex; flex-direction: row; align-items: center;">
-        <div style="margin: 20px"><a href="/topics">Go back</a></div>
-        <h1>{% block title %} {{ topic["name"] }} {% endblock %}</h1>
+        <button class="button is-link is-light"><a href="/topics">Go back</a></button>
+        <p class="is-size-4 pl-1">{% block title %} {{ topic["name"] }} {% endblock %}</p>
     </div>
 
     <div style="width: 50%; margin: auto">
@@ -13,18 +13,18 @@
             <textarea name="content"
                       placeholder="Message content"
                       rows="15"
-                      cols="60"
+                      class="textarea"
                       >{{ request.form['content'] }}</textarea>
             <br>
-            <button type="submit">Submit</button>
+            <button class="button" type="submit">Submit</button>
         </form>
     </div>
 
-    <div style="width: 50%; margin: auto">
+    <div style="width: 50%; margin: auto; margin-top: 1vh">
         {% for comment in comments %}
-        <div style="padding: 10px; background-color: #EEE; margin: 20px" >
-            <h3> {{ comment.username }}</h3>
-            <p style="font-size: 24px">{{ comment.content }}</p>
+        <div class="box has-background-white-ter mb-3" >
+            <h1 class="title is-4"> {{ comment.username }}</h1>
+            <p>{{ comment.content }}</p>
         </div>
         {% endfor %}
     </div>

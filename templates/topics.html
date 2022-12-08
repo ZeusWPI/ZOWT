@@ -5,21 +5,25 @@
     <div style="width: 50%; margin: auto">
         <div style="width: 50%; margin: auto">
             <h3>Voeg een topic toe!</h3>
-            <form method="post">
-                <input type="text" name="title"
+            <form method="post" class='center'>
+                <input class="input is-link" type="text" name="title"
                     placeholder="Topic title"
                     value="{{ request.form['title'] }}"></input>
                 <br>
-                <button type="submit">Submit</button>
+                <button class="button is-primary my-2" type="submit">Submit</button>
             </form>
         </div>
 
         {% for topic in topics %}
+          <div class="card has-background-white-ter my-2">
             <a href="topics/{{ topic['_id'] }}/comments">
-                <div style="padding: 10px; background-color: #EEE; margin: 20px">
-                    <p style="font-size: 24px">{{ topic.name }}</p>
+              <header class='card-header'>
+                <div class="card-header-title">
+                    <p class="subtitle">{{ topic.name }}</p>
                 </div>
+              </header>
             </a>
+          </div>
         {% endfor %}
     </div>
 {% endblock %}
