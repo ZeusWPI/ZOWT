@@ -3,7 +3,20 @@
 {% block content %}
     <div style="display: flex; flex-direction: row; align-items: center;">
         <div style="margin: 20px"><a href="/topics">Go back</a></div>
-        <h1>{% block title %} {{ topic_name }} {% endblock %}</h1>
+        <h1>{% block title %} {{ topic["name"] }} {% endblock %}</h1>
+    </div>
+
+    <div style="width: 50%; margin: auto">
+        <h3>Voeg jouw mening toe!</h3>
+        <form method="post">
+            <textarea name="content"
+                      placeholder="Message content"
+                      rows="15"
+                      cols="60"
+                      >{{ request.form['content'] }}</textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 
     <div style="width: 50%; margin: auto">

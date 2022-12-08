@@ -11,10 +11,8 @@ class Mongo:
         client = pymongo.MongoClient(
             host=["mongo_service:27017"],
             serverSelectionTimeoutMS=3000,  # 3 second timeout
-            #username=os.environ["USER"],
-            #password=os.environ["PASSWORD"],
-            username="zowt",
-            password="zowt",
+            username=os.environ["USER"],
+            password=os.environ["PASSWORD"],
             uuidRepresentation="standard"
         )
 
@@ -32,6 +30,9 @@ class Mongo:
         topic1 = self.add_topic("belastingen")
         topic2 = self.add_topic("twitter")
         comment1 = self.add_comment(topic1["_id"], user1["_id"], "belastingen bad weee")
+
+    def get_users(self) -> [dict]:
+        return [user for user in self.users.find()]
 
     def get_topics(self) -> [dict]:
         return [topic for topic in self.topics.find()]
