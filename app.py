@@ -10,13 +10,28 @@ def hello_world():  # put application's code here
 
 @app.route('/topics')
 def topics():
-    topics = ['This is the first topic.',
-                'This is the second topic.',
-                'This is the third topic.',
-                'This is the fourth topic.'
-                ]
-    return render_template('topics.html', topics=topics)
+    topics = [{'name': 'Wordt het belastingsgeld nuttig gebruikt?', 'id': "uuid1"},
+              {'name': 'This is the second topic.', 'id': "uuid2"},
+              {'name': 'This is the third topic.', 'id': "uuid3"},
+              {'name': 'This is the fourth topic.', 'id': "uuid4"}]
+    return render_template('topics.html', topics=topics, load_topic=load_topic)
 
+@app.route('/topics/<topic_id>/comments')
+def load_topic(topic_id):
+    print("load_topic", file=sys.stderr)
+
+    comments = [{'value': 'This is the first comment.', 'id': "uuid1"},
+              {'value': 'This is the second comment.', 'id': "uuid2"},
+              {'value': 'This is the third comment.', 'id': "uuid3"},
+              {'value': 'This is the fourth comment.', 'id': "uuid4"}]
+    # todo get topic name through topic id
+    return render_template('comments.html', comments=comments, topic="Wordt het belastingsgeld nuttig gebruikt?")
+app.jinja_env.globals.update(load_topic=load_topic)
+
+
+import sys
+def test():
+    print("TEST", file=sys.stderr);
 
 if __name__ == '__main__':
     app.run()

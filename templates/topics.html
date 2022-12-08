@@ -4,9 +4,12 @@
     <h1>{% block title %} Topics {% endblock %}</h1>
     <div style="width: 50%; margin: auto">
         {% for topic in topics %}
-        <div style="padding: 10px; background-color: #EEE; margin: 20px">
-            <p style="font-size: 24px">{{ topic }}</p>
-        </div>
+            <a href="topics/{{ topic.id }}/comments">
+                <div style="padding: 10px; background-color: #EEE; margin: 20px" onclick="redirect('topics/{{ topic.id }}/comments')">
+                    <p style="font-size: 24px">{{ topic.name }}</p>
+                </div>
+            </a>
+
         {% endfor %}
     </div>
 {% endblock %}
